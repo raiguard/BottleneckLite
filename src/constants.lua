@@ -4,10 +4,10 @@ constants.additional_vertical_offset = 0.1
 
 constants.colors = {
   blue = {b = 1},
+  cyan = {g = 1, b = 1},
   green = {g = 1},
   purple = {r = 1, b = 1},
   red = {r = 1},
-  teal = {g = 1, b = 1},
   white = {r = 1, g = 1, b = 1},
   yellow = {r = 1, g = 1},
 }
