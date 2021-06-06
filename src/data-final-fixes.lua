@@ -17,6 +17,8 @@ local crafters = {
   "rocket-silo"
 }
 
+local enable_glow = settings.startup["bnl-glow"].value
+
 local function create_wv(root)
   local wv = root.working_visualisations
   if not wv then
@@ -24,11 +26,11 @@ local function create_wv(root)
     root.working_visualisations = wv
   end
   local new_wv = {
-    render_layer = "light-effect",
-    draw_as_light = true,
-    draw_as_sprite = true,
-    apply_tint = "status",
     always_draw = true,
+    apply_tint = "status",
+    draw_as_light = enable_glow,
+    draw_as_sprite = true,
+    render_layer = "light-effect",
     animation = {
       filename = "__BottleneckLite__/graphics/solid.png",
       size = 64,

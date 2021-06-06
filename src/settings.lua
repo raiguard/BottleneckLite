@@ -8,6 +8,13 @@ data:extend{
     default_value = true,
     order = "aa",
   },
+  {
+    type = "bool-setting",
+    name = "bnl-glow",
+    setting_type = "startup",
+    default_value = true,
+    order = "ab",
+  },
   -- TODO:
   -- {
   --   type = "bool-setting",
