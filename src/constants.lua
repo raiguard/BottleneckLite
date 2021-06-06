@@ -50,7 +50,7 @@ constants.status_defaults = {
     order = "bc",
   },
   insufficient_input = {
-    color = "green",
+    color = "red",
     icon = "solid",
     order = "bd",
   },
