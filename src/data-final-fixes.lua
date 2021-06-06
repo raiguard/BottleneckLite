@@ -1,5 +1,7 @@
 local constants = require("constants")
 
+if not settings.startup["bnl-enable"].value then return end
+
 -- Extract settings
 local status_colors = {}
 for name, spec in pairs(settings.startup) do
