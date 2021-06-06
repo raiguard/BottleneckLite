@@ -18,6 +18,7 @@ local crafters = {
 }
 
 local enable_glow = settings.startup["bnl-glow"].value
+local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 
 local function create_wv(root)
   local wv = root.working_visualisations
@@ -34,7 +35,7 @@ local function create_wv(root)
     animation = {
       filename = "__BottleneckLite__/graphics/solid.png",
       size = 64,
-      scale = 0.15,
+      scale = size,
       line_length = 1,
       frame_count = 1,
       -- FIXME: Calculate offset based on entity size

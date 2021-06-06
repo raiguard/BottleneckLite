@@ -17,6 +17,19 @@ for name in pairs(constants.colors) do
 end
 constants.color_settings = color_settings
 
+constants.default_size = "small"
+constants.sizes = {
+  small = 0.15,
+  medium = 0.2,
+  large = 0.25
+}
+
+local size_settings = {}
+for name in pairs(constants.sizes) do
+  size_settings[#size_settings + 1] = name
+end
+constants.size_settings = size_settings
+
 constants.status_settings = {
   disabled = {color = "red", order = "ba"},
   full_output = {color = "yellow", order = "bb"},

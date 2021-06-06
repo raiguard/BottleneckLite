@@ -15,14 +15,14 @@ data:extend{
     default_value = true,
     order = "ab",
   },
-  -- TODO:
-  -- {
-  --   type = "bool-setting",
-  --   name = "bnl-show-on-mining-drills",
-  --   setting_type = "startup",
-  --   default_value = true,
-  --   order = "ab",
-  -- }
+  {
+    type = "string-setting",
+    name = "bnl-indicator-size",
+    setting_type = "startup",
+    default_value = constants.default_size,
+    allowed_values = constants.size_settings,
+    order = "ac",
+  },
 }
 
 local color_settings = {}
