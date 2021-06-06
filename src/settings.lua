@@ -18,9 +18,9 @@ data:extend{
   -- }
 }
 
-local status_settings = {}
-for name, spec in pairs(constants.status_defaults) do
-  status_settings[#status_settings + 1] = {
+local color_settings = {}
+for name, spec in pairs(constants.status_settings) do
+  color_settings[#color_settings + 1] = {
     type = "string-setting",
     name = "bnl-color-"..name,
     localised_name = {"mod-setting-name.bnl-color-setting", {"mod-setting-name.bnl-status-"..name}},
@@ -29,15 +29,6 @@ for name, spec in pairs(constants.status_defaults) do
     allowed_values = constants.color_settings,
     order = spec.order,
   }
-  status_settings[#status_settings + 1] = {
-    type = "string-setting",
-    name = "bnl-icon-"..name,
-    localised_name = {"mod-setting-name.bnl-icon-setting", {"mod-setting-name.bnl-status-"..name}},
-    setting_type = "startup",
-    default_value = spec.icon,
-    allowed_values = constants.icon_settings,
-    order = spec.order,
-  }
 end
 
-data:extend(status_settings)
+data:extend(color_settings)

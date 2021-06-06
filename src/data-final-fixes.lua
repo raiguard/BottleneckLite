@@ -1,19 +1,13 @@
-local table = require("__flib__.table")
-
 local constants = require("constants")
 
 -- Extract settings
 local status_colors = {}
-local status_icons = {}
 for name, spec in pairs(settings.startup) do
-  local matched, _, type, key = string.find(name, "^bnl%-(.-)%-(.-)$")
+  local matched, _, key = string.find(name, "^bnl%-color%-(.-)$")
   if matched then
-    local tbl = type == "color" and status_colors or status_icons
-    tbl[key] = spec.value
+    status_colors[key] = constants.colors[spec.value]
   end
 end
-
-status_colors = table.map(status_colors, function(color) return constants.colors[color] end)
 
 local crafters = {
   "assembling-machine",
@@ -34,7 +28,6 @@ local function create_wv(root)
     apply_tint = "status",
     always_draw = true,
     animation = {
-      -- FIXME: It doesn't appear that you can have different icons per status :(
       filename = "__BottleneckLite__/graphics/solid.png",
       size = 64,
       scale = 0.15,
@@ -50,7 +43,7 @@ local function create_wv(root)
 end
 
 for _, type in pairs(crafters) do
-  for name, crafter in pairs(data.raw[type]) do
+  for _, crafter in pairs(data.raw[type]) do
     crafter.status_colors = status_colors
     create_wv(crafter)
   end
