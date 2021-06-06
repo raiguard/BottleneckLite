@@ -6,8 +6,16 @@ data:extend{
     name = "bnl-enable",
     setting_type = "startup",
     default_value = true,
-    order = "a",
-  }
+    order = "aa",
+  },
+  -- TODO:
+  -- {
+  --   type = "bool-setting",
+  --   name = "bnl-show-on-mining-drills",
+  --   setting_type = "startup",
+  --   default_value = true,
+  --   order = "ab",
+  -- }
 }
 
 local status_settings = {}

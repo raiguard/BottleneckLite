@@ -37,42 +37,42 @@ constants.status_defaults = {
   disabled = {
     color = "white",
     icon = "cross",
-    order = "b",
+    order = "ba",
   },
   full_output = {
     color = "yellow",
     icon = "solid",
-    order = "c",
+    order = "bb",
   },
   idle = {
     color = "yellow",
     icon = "pause",
-    order = "d",
+    order = "bc",
   },
   insufficient_input = {
     color = "green",
     icon = "solid",
-    order = "e",
+    order = "bd",
   },
   low_power = {
     color = "yellow",
     icon = "alert",
-    order = "f",
+    order = "be",
   },
   no_minable_resources = {
     color = "red",
     icon = "cross",
-    order = "g",
+    order = "bf",
   },
   no_power = {
     color = "red",
     icon = "alert",
-    order = "h",
+    order = "bg",
   },
   working = {
     color = "green",
     icon = "solid",
-    order = "i",
+    order = "bh",
   },
 }
 
