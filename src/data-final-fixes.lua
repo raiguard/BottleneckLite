@@ -11,12 +11,6 @@ for name, spec in pairs(settings.startup) do
   end
 end
 
-local crafters = {
-  "assembling-machine",
-  "furnace",
-  "rocket-silo"
-}
-
 local enable_glow = settings.startup["bnl-glow"].value
 local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 
@@ -60,7 +54,7 @@ local function add_indicator(prototype, wv_root)
   }
 end
 
-for _, type in pairs(crafters) do
+for _, type in pairs{"assembling-machine", "furnace", "rocket-silo"} do
   for _, crafter in pairs(data.raw[type]) do
     if not crafter.bottleneck_ignore then
       add_indicator(crafter)
