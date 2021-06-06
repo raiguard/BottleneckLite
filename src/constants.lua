@@ -18,10 +18,10 @@ end
 constants.color_settings = color_settings
 
 constants.icons = {
+  off = "__BottleneckLite__/graphics/off.png", -- Show this as the first option
   alert = "__BottleneckLite__/graphics/alert.png",
   cross = "__BottleneckLite__/graphics/cross.png",
   minus = "__BottleneckLite__/graphics/minus.png",
-  off = "__BottleneckLite__/graphics/off.png",
   pause = "__BottleneckLite__/graphics/pause.png",
   solid = "__BottleneckLite__/graphics/solid.png",
   stop = "__BottleneckLite__/graphics/stop.png",
