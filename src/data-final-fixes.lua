@@ -22,12 +22,24 @@ local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 
 for _, type in pairs(crafters) do
   for _, crafter in pairs(data.raw[type]) do
+    -- Set status colors
     crafter.status_colors = status_colors
+
+    -- Calculate shift for the indicator
+    local selection_box = crafter.selection_box
+    local left_top = selection_box[1]
+    local right_bottom = selection_box[2]
+    local x = left_top[1] + (math.abs(right_bottom[1] - left_top[1]) * constants.horizontal_position)
+    local y = right_bottom[2] - size - constants.additional_vertical_offset
+
+    -- Get or create working visualisations table
     local wv = crafter.working_visualisations
     if not wv then
       wv = {}
       crafter.working_visualisations = wv
     end
+
+    -- Add to working visualisations
     wv[#wv + 1] = {
       always_draw = true,
       apply_tint = "status",
@@ -40,8 +52,7 @@ for _, type in pairs(crafters) do
         scale = size,
         line_length = 1,
         frame_count = 1,
-        -- FIXME: Calculate offset based on entity size
-        shift = {-0.6, 1.3},
+        shift = {x, y},
         animation_speed = 1,
         direction_count = 1,
       },

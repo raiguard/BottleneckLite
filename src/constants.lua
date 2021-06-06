@@ -1,5 +1,7 @@
 local constants = {}
 
+constants.additional_vertical_offset = 0.1
+
 constants.colors = {
   blue = {b = 1},
   green = {g = 1},
@@ -18,10 +20,13 @@ end
 constants.color_settings = color_settings
 
 constants.default_size = "small"
+
+constants.horizontal_position = 0.35
+
 constants.sizes = {
   small = 0.15,
   medium = 0.2,
-  large = 0.25
+  large = 0.25,
 }
 
 local size_settings = {}
