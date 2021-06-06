@@ -7,8 +7,8 @@
       "name": "Debug",
       "factorioPath": "/home/rai/dev/factorio/1/bin/x64/factorio",
       "hookMode": "debug",
-      "hookControl": ["BottleneckLite", "Sandbox"],
-      "factorioArgs": ["--load-scenario", "Bottleneck Lite"]
+      "factorioArgs": ["--load-scenario", "Bottleneck Lite"],
+      "hookData": true
     },
     {
       "type": "factoriomod",
@@ -16,7 +16,7 @@
       "name": "Debug (no scenario)",
       "factorioPath": "/home/rai/dev/factorio/1/bin/x64/factorio",
       "hookMode": "debug",
-      "hookControl": ["BottleneckLite", "Sandbox"]
+      "hookData": true
     }
   ]
 }
