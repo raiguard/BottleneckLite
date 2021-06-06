@@ -62,25 +62,29 @@ end
 
 for _, type in pairs(crafters) do
   for _, crafter in pairs(data.raw[type]) do
-    add_indicator(crafter)
+    if not crafter.bottleneck_ignore then
+      add_indicator(crafter)
+    end
   end
 end
 
 if settings.startup["bnl-include-mining-drills"].value then
   for _, drill in pairs(data.raw["mining-drill"]) do
-    drill.status_colors = status_colors
+    if not drill.bottleneck_ignore then
+      drill.status_colors = status_colors
 
-    -- Ensure the drill has a graphics set
-    if not drill.graphics_set then
-      drill.graphics_set = {
-        animation = drill.animations
-      }
-    end
+      -- Ensure the drill has a graphics set
+      if not drill.graphics_set then
+        drill.graphics_set = {
+          animation = drill.animations
+        }
+      end
 
-    add_indicator(drill, drill.graphics_set)
+      add_indicator(drill, drill.graphics_set)
 
-    if drill.wet_mining_graphics_set then
-      add_indicator(drill, drill.wet_mining_graphics_set)
+      if drill.wet_mining_graphics_set then
+        add_indicator(drill, drill.wet_mining_graphics_set)
+      end
     end
   end
 end
