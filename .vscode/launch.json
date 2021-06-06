@@ -8,7 +8,7 @@
       "factorioPath": "/home/rai/dev/factorio/1/bin/x64/factorio",
       "hookMode": "debug",
       "hookControl": ["BottleneckLite", "Sandbox"],
-      "factorioArgs": ["--load-scenario", "EditorExtensions/testing"]
+      "factorioArgs": ["--load-scenario", "Bottleneck Lite"]
     },
     {
       "type": "factoriomod",
