@@ -19,9 +19,9 @@ The indicators will be colored according to these statuses:
 - No power (red)
 - Working (green)
 
-The colors can be customized in the settings menu. Other settings include indicator size, whether or not they will glow in the dark, and whether or not they will be drawn on mining drills.
+The colors can be customized in the settings menu. Along with green, red, and yellow, you can also change the colors to cyan, blue, purple, white, or "off" (which hides the indicator for that status). Other settings include indicator size, whether or not they will glow in the dark, and whether or not they will be drawn on mining drills.
 
-**NOTE:** Because of the way the mod works, all settings are under the `Startup` tab in the mod settings menu, and any changes require restarting Factorio to take effect.
+**NOTE:** Because of the way the mod works, all settings are under the `Startup` tab in the mod settings menu, and any changes require restarting Factorio to take effect.## Features
 
 ## Compared to [Bottleneck](https://mods.factorio.com/mod/Bottleneck)
 
