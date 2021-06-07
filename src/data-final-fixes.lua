@@ -88,6 +88,7 @@ if settings.startup["bnl-include-mining-drills"].value then
   end
 end
 
+-- HACK: Labs do not support working_visualisations, so we must add the indicators to the actual lab animations
 if settings.startup["bnl-include-labs"].value then
   for _, lab in pairs(data.raw["lab"]) do
     for tbl_name, status in pairs{off_animation = "idle", on_animation = "working"} do
