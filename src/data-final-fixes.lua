@@ -88,30 +88,45 @@ if settings.startup["bnl-include-mining-drills"].value then
   end
 end
 
--- HACK: Labs do not support working_visualisations, so we must add the indicators to the actual lab animations
-if settings.startup["bnl-include-labs"].value then
-  for _, lab in pairs(data.raw["lab"]) do
-    for tbl_name, status in pairs{off_animation = "idle", on_animation = "working"} do
-      -- Ensure the lab has `layers` in this animation
-      local animation = lab[tbl_name]
-      local layers = animation.layers
-      if not layers then
-        layers = {animation}
-        lab[tbl_name] = {layers = layers}
-      end
+-- FIXME: This causes a Factorio crash when modifying the SE space lab
+-- -- HACK: Labs do not support working_visualisations, so we must add the indicators to the actual lab animations
+-- if settings.startup["bnl-include-labs"].value then
+--   for name, lab in pairs(data.raw["lab"]) do
+--     for tbl_name, status in pairs{off_animation = "idle", on_animation = "working"} do
+--       -- Ensure the lab has `layers` in this animation
+--       local animation = lab[tbl_name]
+--       local layers = animation.layers
+--       if not layers then
+--         layers = {animation}
+--         lab[tbl_name] = {layers = layers}
+--       end
 
-      -- Generate frame sequence for the single-frame source image
-      local frame_count = layers[1].frame_count
-      local frame_sequence = {}
-      for i = 1, frame_count do
-        frame_sequence[i] = 1
-      end
+--       -- Generate frame sequence for the single-frame source image
+--       local first_layer = layers[1]
+--       local frame_sequence = {}
+--       for i = 1, first_layer.frame_sequence and #first_layer.frame_sequence or first_layer.frame_count do
+--         frame_sequence[i] = 1
+--       end
 
-      -- Add a new layer
-      local indicator = build_indicator(lab).animation
-      indicator.tint = status_colors[status]
-      indicator.frame_sequence = frame_sequence
-      layers[#layers + 1] = indicator
-    end
-  end
-end
+--       -- Add a new layer
+--       local indicator = build_indicator(lab).animation
+--       indicator.tint = status_colors[status]
+--       indicator.frame_sequence = frame_sequence
+--       indicator.frame_count = first_layer.frame_count
+--       indicator.repeat_count = first_layer.repeat_count
+--       indicator.run_mode = first_layer.run_mode
+--       layers[#layers + 1] = indicator
+--       -- log(
+--       --   name
+--       --   ..": "
+--       --   ..(first_layer.frame_count or "")
+--       --   .." "
+--       --   ..(first_layer.repeat_count or "")
+--       --   .." "
+--       --   ..(first_layer.run_mode or "")
+--       --   .." "
+--       --   ..serpent.line(frame_sequence)
+--       -- )
+--     end
+--   end
+-- end

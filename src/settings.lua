@@ -15,13 +15,13 @@ data:extend{
     default_value = true,
     order = "ab",
   },
-  {
-    type = "bool-setting",
-    name = "bnl-include-labs",
-    setting_type = "startup",
-    default_value = false,
-    order = "ac",
-  },
+  -- {
+  --   type = "bool-setting",
+  --   name = "bnl-include-labs",
+  --   setting_type = "startup",
+  --   default_value = false,
+  --   order = "ac",
+  -- },
   {
     type = "bool-setting",
     name = "bnl-include-mining-drills",
