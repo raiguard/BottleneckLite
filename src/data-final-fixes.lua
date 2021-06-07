@@ -14,12 +14,7 @@ end
 local enable_glow = settings.startup["bnl-glow"].value
 local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 
-local function add_indicator(prototype, wv_root)
-  wv_root = wv_root or prototype
-
-  -- Set status colors
-  wv_root.status_colors = status_colors
-
+local function build_indicator(prototype)
   -- Calculate shift for the indicator
   local selection_box = prototype.selection_box
   local left_top = selection_box[1]
@@ -27,15 +22,8 @@ local function add_indicator(prototype, wv_root)
   local x = left_top[1] + (math.abs(right_bottom[1] - left_top[1]) * constants.horizontal_position)
   local y = right_bottom[2] - size - constants.additional_vertical_offset
 
-  -- Get or create working visualisations table
-  local wv = wv_root.working_visualisations
-  if not wv then
-    wv = {}
-    wv_root.working_visualisations = wv
-  end
-
-  -- Add to working visualisations
-  wv[#wv + 1] = {
+  -- Indicator animation
+  return {
     always_draw = true,
     apply_tint = "status",
     draw_as_light = enable_glow,
@@ -54,10 +42,27 @@ local function add_indicator(prototype, wv_root)
   }
 end
 
+local function add_to_wv(prototype, wv_root)
+  wv_root = wv_root or prototype
+
+  -- Set status colors
+  wv_root.status_colors = status_colors
+
+  -- Get or create working visualisations table
+  local wv = wv_root.working_visualisations
+  if not wv then
+    wv = {}
+    wv_root.working_visualisations = wv
+  end
+
+  -- Add indicator to working visualisations
+  wv[#wv + 1] = build_indicator(prototype)
+end
+
 for _, type in pairs{"assembling-machine", "furnace", "rocket-silo"} do
   for _, crafter in pairs(data.raw[type]) do
     if not crafter.bottleneck_ignore then
-      add_indicator(crafter)
+      add_to_wv(crafter)
     end
   end
 end
@@ -74,12 +79,38 @@ if settings.startup["bnl-include-mining-drills"].value then
         }
       end
 
-      add_indicator(drill, drill.graphics_set)
+      add_to_wv(drill, drill.graphics_set)
 
       if drill.wet_mining_graphics_set then
-        add_indicator(drill, drill.wet_mining_graphics_set)
+        add_to_wv(drill, drill.wet_mining_graphics_set)
       end
     end
   end
 end
 
+if settings.startup["bnl-include-labs"].value then
+  for _, lab in pairs(data.raw["lab"]) do
+    for tbl_name, status in pairs{off_animation = "idle", on_animation = "working"} do
+      -- Ensure the lab has `layers` in this animation
+      local animation = lab[tbl_name]
+      local layers = animation.layers
+      if not layers then
+        layers = {animation}
+        lab[tbl_name] = {layers = layers}
+      end
+
+      -- Generate frame sequence for the single-frame source image
+      local frame_count = layers[1].frame_count
+      local frame_sequence = {}
+      for i = 1, frame_count do
+        frame_sequence[i] = 1
+      end
+
+      -- Add a new layer
+      local indicator = build_indicator(lab).animation
+      indicator.tint = status_colors[status]
+      indicator.frame_sequence = frame_sequence
+      layers[#layers + 1] = indicator
+    end
+  end
+end
