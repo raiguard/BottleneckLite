@@ -6,8 +6,7 @@ Bottleneck Lite is a mod for Factorio that helps you find bottlenecks in your fa
 
 ## Features
 
-Bottleneck Lite adds "indicators" to every crafting machine and mining drill, allowing you to quickly determine its status:
-
+Bottleneck Lite adds "indicators" to every crafting machine and mining drill, allowing you to quickly determine its status.
 
 The indicators will be colored according to these statuses:
 
