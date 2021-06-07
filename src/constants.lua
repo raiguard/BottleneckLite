@@ -12,7 +12,6 @@ constants.colors = {
   yellow = {r = 1, g = 1},
 }
 
--- TODO: Make a flib function for this usecase
 local color_settings = {}
 for name in pairs(constants.colors) do
   color_settings[#color_settings + 1] = name
