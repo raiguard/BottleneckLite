@@ -21,7 +21,7 @@ constants.color_settings = color_settings
 
 constants.default_size = "small"
 
-constants.horizontal_position = 0.35
+constants.horizontal_position = 0.3
 
 constants.sizes = {
   small = 0.15,
