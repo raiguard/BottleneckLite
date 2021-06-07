@@ -60,16 +60,16 @@ local function add_to_wv(prototype, wv_root)
 end
 
 for _, type in pairs{"assembling-machine", "furnace", "rocket-silo"} do
-  for _, crafter in pairs(data.raw[type]) do
-    if not crafter.bottleneck_ignore then
+  for name, crafter in pairs(data.raw[type]) do
+    if not crafter.bottleneck_ignore and not constants.ignored_entities[name] then
       add_to_wv(crafter)
     end
   end
 end
 
 if settings.startup["bnl-include-mining-drills"].value then
-  for _, drill in pairs(data.raw["mining-drill"]) do
-    if not drill.bottleneck_ignore then
+  for name, drill in pairs(data.raw["mining-drill"]) do
+    if not drill.bottleneck_ignore and not constants.ignored_entities[name] then
       drill.status_colors = status_colors
 
       -- Ensure the drill has a graphics set
