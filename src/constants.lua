@@ -3,6 +3,7 @@ local constants = {}
 constants.additional_vertical_offset = 0.1
 
 constants.colors = {
+  off = {a = 0},
   blue = {b = 1},
   cyan = {g = 1, b = 1},
   green = {g = 1},
