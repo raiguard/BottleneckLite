@@ -39,6 +39,7 @@ Bottleneck Lite, in comparison to Bottleneck, has _no runtime scripting_. The in
 - Changing settings requires restarting Factorio
 - No hotkey to toggle the indicators - enabling/disabling them is a setting, and so requires a restart
 - Only one style of indicator (no alert, cross, stop, minus, or 3D variants)
+- No indicators on labs
 
 ## Screenshots
 
