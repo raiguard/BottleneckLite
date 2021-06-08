@@ -1,3 +1,5 @@
+local area = require("__flib__.area")
+
 local constants = require("constants")
 
 if not settings.startup["bnl-enable"].value then return end
@@ -17,10 +19,20 @@ local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 local function build_indicator(prototype)
   -- Calculate shift for the indicator
   local selection_box = prototype.selection_box
-  local left_top = selection_box[1]
-  local right_bottom = selection_box[2]
-  local x = left_top[1] + (math.abs(right_bottom[1] - left_top[1]) * constants.horizontal_position)
-  local y = right_bottom[2] - size - constants.additional_vertical_offset
+  -- TODO: Add a flib function for this
+  local Box = area.load{
+    left_top = {x = selection_box[1][1], y = selection_box[1][2]},
+    right_bottom = {x = selection_box[2][1], y = selection_box[2][2]}
+  }
+  local positions = {
+    north_south = {},
+    east_west = {},
+  }
+  for _, tbl in pairs(positions) do
+    tbl[1] = Box.left_top.x + (Box:width() * constants.horizontal_position) -- X
+    tbl[2] = Box.right_bottom.y - size - constants.additional_vertical_offset -- Y
+    Box = Box:rotate()
+  end
 
   -- Indicator animation
   return {
@@ -35,10 +47,13 @@ local function build_indicator(prototype)
       scale = size,
       line_length = 1,
       frame_count = 1,
-      shift = {x, y},
       animation_speed = 1,
       direction_count = 1,
     },
+    north_position = positions.north_south,
+    east_position = positions.east_west,
+    south_position = positions.north_south,
+    west_position = positions.east_west,
   }
 end
 
