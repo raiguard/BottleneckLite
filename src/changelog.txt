@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.2
-Date: ????
+Date: 2021-06-08
   Changes:
     - Re-added the indicator to SE condenser turbines
     - Prototypes with `bottleneck_ignore = true` will have that property removed after BNL reads it, to avoid pollution with debugging tools
