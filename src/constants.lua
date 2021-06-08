@@ -24,7 +24,6 @@ constants.default_size = "small"
 constants.horizontal_position = 0.3
 
 constants.ignored_entities = {
-  ["se-condenser-turbine"] = true,
   ["se-core-miner"] = true,
 }
 

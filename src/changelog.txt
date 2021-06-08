@@ -2,6 +2,7 @@
 Version: 1.1.2
 Date: ????
   Changes:
+    - Re-added the indicator to SE condenser turbines
     - The mod now depends on `flib`
   Bugfixes:
     - Fixed the mod not accounting for non-square entity rotations, leading to incorrect indicator placements
