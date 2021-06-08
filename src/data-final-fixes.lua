@@ -19,7 +19,7 @@ local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 local function build_indicator(prototype)
   -- Calculate shift for the indicator
   local selection_box = prototype.selection_box
-  -- TODO: Add a flib function for this
+  -- TODO: Add a flib function for converting from a keyless representation
   local Box = area.load{
     left_top = {x = selection_box[1][1], y = selection_box[1][2]},
     right_bottom = {x = selection_box[2][1], y = selection_box[2][2]}
@@ -76,29 +76,43 @@ end
 
 for _, type in pairs{"assembling-machine", "furnace", "rocket-silo"} do
   for name, crafter in pairs(data.raw[type]) do
-    if not crafter.bottleneck_ignore and not constants.ignored_entities[name] then
-      add_to_wv(crafter)
+    if constants.ignored_entities[name] then goto continue end
+    if crafter.bottleneck_ignore then
+      -- Remove the property to avoid pollution with some debugging features
+      crafter.bottleneck_ignore = nil
+      goto continue
     end
+
+    add_to_wv(crafter)
+
+    ::continue::
   end
 end
 
 if settings.startup["bnl-include-mining-drills"].value then
   for name, drill in pairs(data.raw["mining-drill"]) do
-    if not drill.bottleneck_ignore and not constants.ignored_entities[name] then
-      drill.status_colors = status_colors
-
-      -- Ensure the drill has a graphics set
-      if not drill.graphics_set then
-        drill.graphics_set = {
-          animation = drill.animations
-        }
-      end
-
-      add_to_wv(drill, drill.graphics_set)
-
-      if drill.wet_mining_graphics_set then
-        add_to_wv(drill, drill.wet_mining_graphics_set)
-      end
+    if constants.ignored_entities[name] then goto continue end
+    if drill.bottleneck_ignore then
+      -- Remove the property to avoid pollution with some debugging features
+      drill.bottleneck_ignore = nil
+      goto continue
     end
+
+    drill.status_colors = status_colors
+
+    -- Ensure the drill has a graphics set
+    if not drill.graphics_set then
+      drill.graphics_set = {
+        animation = drill.animations
+      }
+    end
+
+    add_to_wv(drill, drill.graphics_set)
+
+    if drill.wet_mining_graphics_set then
+      add_to_wv(drill, drill.wet_mining_graphics_set)
+    end
+
+    ::continue::
   end
 end

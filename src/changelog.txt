@@ -3,6 +3,7 @@ Version: 1.1.2
 Date: ????
   Changes:
     - Re-added the indicator to SE condenser turbines
+    - Prototypes with `bottleneck_ignore = true` will have that property removed after BNL reads it, to avoid pollution with debugging tools
     - The mod now depends on `flib`
   Bugfixes:
     - Fixed the mod not accounting for non-square entity rotations, leading to incorrect indicator placements
