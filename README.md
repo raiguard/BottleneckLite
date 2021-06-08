@@ -41,7 +41,7 @@ Bottleneck Lite, in comparison to Bottleneck, has _no runtime scripting_. The in
 - Only one style of indicator (no alert, cross, stop, minus, or 3D variants)
 - No indicators on labs
 
-### Compatibility
+## Compatibility
 
 For mod authors - if you don't want an indicator to show on your entity for some reason, add `bottleneck_ignore = true` to its prototype and BNL will ignore it.
 
