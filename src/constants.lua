@@ -24,7 +24,13 @@ constants.default_size = "small"
 constants.horizontal_position = 0.3
 
 constants.ignored_entities = {
+  -- Space Exploration
   ["se-core-miner"] = true,
+  -- Transport Drones
+  ["fuel-depot"] = true,
+  ["request-depot"] = true,
+  ["supply-depot"] = true,
+  ["buffer-depot"] = true,
 }
 
 constants.sizes = {
