@@ -2,7 +2,7 @@
 Version: 1.1.3
 Date: ????
   Changes:
-    - Indicators are no longer shown on Transport Drones depots
+    - Indicators are no longer shown on Transport Drones depots and Mining Drones depots
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.2
 Date: 2021-06-08
