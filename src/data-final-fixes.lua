@@ -34,7 +34,6 @@ local function build_indicator(prototype)
     Box = Box:rotate()
   end
 
-  -- Indicator animation
   return {
     always_draw = true,
     apply_tint = "status",
