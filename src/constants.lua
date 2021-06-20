@@ -7,6 +7,7 @@ constants.colors = {
   blue = {b = 1},
   cyan = {g = 1, b = 1},
   green = {g = 1},
+  orange = {r = 1, g = 0.5},
   purple = {r = 1, b = 1},
   red = {r = 1},
   white = {r = 1, g = 1, b = 1},

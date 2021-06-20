@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: ????
+  Features:
+    - Added orange as a selectable color
   Changes:
     - Indicators are no longer shown on Transport Drones depots and Mining Drones depots
 ---------------------------------------------------------------------------------------------------
