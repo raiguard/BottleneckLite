@@ -18,7 +18,7 @@ local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 
 local function build_indicator(prototype)
   -- Calculate shift for the indicator
-  local selection_box = prototype.selection_box
+  local selection_box = prototype.selection_box or prototype.collision_box or prototype.drawing_box
   -- TODO: Add a flib function for converting from a keyless representation
   local Box = area.load{
     left_top = {x = selection_box[1][1], y = selection_box[1][2]},
