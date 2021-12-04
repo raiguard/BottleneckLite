@@ -2,7 +2,9 @@ local area = require("__flib__.area")
 
 local constants = require("constants")
 
-if not settings.startup["bnl-enable"].value then return end
+if not settings.startup["bnl-enable"].value then
+  return
+end
 
 -- Extract settings
 local status_colors = {}
@@ -68,7 +70,7 @@ local function add_to_wv(prototype, wv_root)
   wv[#wv + 1] = build_indicator(prototype)
 end
 
-for _, type in pairs{"assembling-machine", "furnace", "rocket-silo"} do
+for _, type in pairs({ "assembling-machine", "furnace", "rocket-silo" }) do
   for name, crafter in pairs(data.raw[type]) do
     if constants.ignored_entities[name] then
       if crafter.bottleneck_ignore then
@@ -93,7 +95,7 @@ if settings.startup["bnl-include-mining-drills"].value then
         -- Ensure the drill has a graphics set
         if not drill.graphics_set then
           drill.graphics_set = {
-            animation = drill.animations
+            animation = drill.animations,
           }
         end
 
