@@ -29,6 +29,7 @@ constants.ignored_entities = {
   ["mining-depot"] = true,
   -- Space Exploration
   ["se-core-miner"] = true,
+  ["se-rocket-launch-pad-silo"] = true,
   -- Transport Drones
   ["fuel-depot"] = true,
   ["request-depot"] = true,
