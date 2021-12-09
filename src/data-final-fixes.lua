@@ -39,6 +39,7 @@ local function build_indicator(prototype)
     render_layer = "light-effect",
     animation = {
       filename = "__BottleneckLite__/graphics/solid.png",
+      flags = {"icon"},
       size = 64,
       scale = size,
       line_length = 1,
