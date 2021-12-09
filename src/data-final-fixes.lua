@@ -39,7 +39,7 @@ local function build_indicator(prototype)
     render_layer = "light-effect",
     animation = {
       filename = "__BottleneckLite__/graphics/solid.png",
-      flags = {"icon"},
+      flags = { "icon" },
       size = 64,
       scale = size,
       line_length = 1,
@@ -73,7 +73,7 @@ end
 
 for _, type in pairs({ "assembling-machine", "furnace", "rocket-silo" }) do
   for name, crafter in pairs(data.raw[type]) do
-    if constants.ignored_entities[name] then
+    if not constants.ignored_entities[name] then
       if crafter.bottleneck_ignore then
         -- Remove the property to avoid pollution with some debugging features
         crafter.bottleneck_ignore = nil
@@ -86,7 +86,7 @@ end
 
 if settings.startup["bnl-include-mining-drills"].value then
   for name, drill in pairs(data.raw["mining-drill"]) do
-    if constants.ignored_entities[name] then
+    if not constants.ignored_entities[name] then
       if drill.bottleneck_ignore then
         -- Remove the property to avoid pollution with some debugging features
         drill.bottleneck_ignore = nil
