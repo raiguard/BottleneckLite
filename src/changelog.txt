@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.4
-Date: ????
+Date: 2022-08-11
   Features:
     - Added "huge" indicator size (~prokoprandacek)
   Bugfixes:
