@@ -6,15 +6,6 @@ if not settings.startup["bnl-enable"].value then
   return
 end
 
--- Extract settings
-local status_colors = {}
-for name, spec in pairs(settings.startup) do
-  local matched, _, key = string.find(name, "^bnl%-color%-(.-)$")
-  if matched then
-    status_colors[key] = constants.colors[spec.value]
-  end
-end
-
 local enable_glow = settings.startup["bnl-glow"].value
 local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 local style = settings.startup["bnl-indicator-style"].value
@@ -42,6 +33,14 @@ elseif style == "solid" then
     animation_speed = 1,
     direction_count = 1,
   }
+end
+
+local status_colors = {}
+for name, spec in pairs(settings.startup) do
+  local matched, _, key = string.find(name, "^bnl%-color%-(.-)$")
+  if matched then
+    status_colors[key] = constants.colors[style][spec.value]
+  end
 end
 
 local function build_indicator(prototype)

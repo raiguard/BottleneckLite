@@ -3,19 +3,32 @@ local constants = {}
 constants.additional_vertical_offset = 0.1
 
 constants.colors = {
-  off = { a = 0 },
-  blue = { b = 1 },
-  cyan = { g = 1, b = 1 },
-  green = { g = 1 },
-  orange = { r = 1, g = 0.5 },
-  purple = { r = 1, b = 1 },
-  red = { r = 1 },
-  white = { r = 1, g = 1, b = 1 },
-  yellow = { r = 1, g = 1 },
+  default = {
+    off = { a = 0 },
+    blue = { r = 0.3, g = 0.3, b = 1 },
+    cyan = { r = 0.3, g = 1, b = 1 },
+    green = { r = 0.3, g = 1, b = 0.3 },
+    orange = { r = 1, g = 0.5, b = 0.3 },
+    purple = { r = 1, g = 0.3, b = 1 },
+    red = { r = 1, g = 0.2, b = 0.2 },
+    white = { r = 1, g = 1, b = 1 },
+    yellow = { r = 1, g = 1, b = 0.3 },
+  },
+  solid = {
+    off = { a = 0 },
+    blue = { b = 1 },
+    cyan = { g = 1, b = 1 },
+    green = { g = 1 },
+    orange = { r = 1, g = 0.5 },
+    purple = { r = 1, b = 1 },
+    red = { r = 1 },
+    white = { r = 1, g = 1, b = 1 },
+    yellow = { r = 1, g = 1 },
+  },
 }
 
 local color_settings = {}
-for name in pairs(constants.colors) do
+for name in pairs(constants.colors.default) do
   color_settings[#color_settings + 1] = name
 end
 constants.color_settings = color_settings

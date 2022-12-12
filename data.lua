@@ -1,3 +1,5 @@
+local constants = require("__BottleneckLite__/constants")
+
 data:extend({
   {
     type = "sprite",
@@ -13,9 +15,18 @@ data:extend({
         size = 64,
         scale = 0.5,
         offset = { 8, 8 },
-        tint = { g = 1 },
+        tint = constants.colors.solid.green,
         flags = { "icon" },
       },
     },
+  },
+  {
+    type = "sprite",
+    name = "bnl_default_green",
+    filename = "__flib__/graphics/indicators.png",
+    size = 32,
+    y = 32,
+    tint = constants.colors.default.green,
+    flags = { "icon" },
   },
 })
