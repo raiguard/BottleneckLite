@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.2.4
+Version: 1.3.0
 Date: ????
-  Changes:
+  Features:
+    - Added a new default indicator style based on the indicators in entity GUIs
+    - Added a setting to change indicator styles
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.3
 Date: 2021-12-09

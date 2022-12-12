@@ -1,6 +1,6 @@
-local area = require("__flib__.area")
+local bounding_box = require("__flib__/bounding-box")
 
-local constants = require("constants")
+local constants = require("__BottleneckLite__/constants")
 
 if not settings.startup["bnl-enable"].value then
   return
@@ -17,18 +17,44 @@ end
 
 local enable_glow = settings.startup["bnl-glow"].value
 local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
+local style = settings.startup["bnl-indicator-style"].value
+local animation
+if style == "default" then
+  animation = {
+    filename = "__flib__/graphics/indicators.png",
+    flags = { "icon" },
+    y = 32,
+    size = 32,
+    scale = size * 4,
+    line_length = 1,
+    frame_count = 1,
+    animation_speed = 1,
+    direction_count = 1,
+  }
+elseif style == "solid" then
+  animation = {
+    filename = "__BottleneckLite__/graphics/solid.png",
+    flags = { "icon" },
+    size = 64,
+    scale = size,
+    line_length = 1,
+    frame_count = 1,
+    animation_speed = 1,
+    direction_count = 1,
+  }
+end
 
 local function build_indicator(prototype)
   -- Calculate shift for the indicator
-  local Box = area.load(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
+  local box = bounding_box.ensure_explicit(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
   local positions = {
     north_south = {},
     east_west = {},
   }
   for _, tbl in pairs(positions) do
-    tbl[1] = Box.left_top.x + (Box:width() * constants.horizontal_position) -- X
-    tbl[2] = Box.right_bottom.y - size - constants.additional_vertical_offset -- Y
-    Box = Box:rotate()
+    tbl[1] = box.left_top.x + (bounding_box.width(box) * constants.horizontal_position) -- X
+    tbl[2] = box.right_bottom.y - size - constants.additional_vertical_offset -- Y
+    box = bounding_box.rotate(box)
   end
 
   return {
@@ -37,16 +63,7 @@ local function build_indicator(prototype)
     draw_as_light = enable_glow,
     draw_as_sprite = true,
     render_layer = "light-effect",
-    animation = {
-      filename = "__BottleneckLite__/graphics/solid.png",
-      flags = { "icon" },
-      size = 64,
-      scale = size,
-      line_length = 1,
-      frame_count = 1,
-      animation_speed = 1,
-      direction_count = 1,
-    },
+    animation = animation,
     north_position = positions.north_south,
     east_position = positions.east_west,
     south_position = positions.north_south,

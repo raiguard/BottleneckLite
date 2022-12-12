@@ -50,14 +50,14 @@ end
 constants.size_settings = size_settings
 
 constants.status_settings = {
-  disabled = { color = "red", order = "ba" },
-  full_output = { color = "yellow", order = "bb" },
-  idle = { color = "red", order = "bc" },
-  insufficient_input = { color = "red", order = "bd" },
-  low_power = { color = "yellow", order = "be" },
-  no_minable_resources = { color = "red", order = "bf" },
-  no_power = { color = "red", order = "bg" },
-  working = { color = "green", order = "bh" },
+  disabled = { color = "red", order = "ca" },
+  full_output = { color = "yellow", order = "cb" },
+  idle = { color = "red", order = "cc" },
+  insufficient_input = { color = "red", order = "cd" },
+  low_power = { color = "yellow", order = "ce" },
+  no_minable_resources = { color = "red", order = "cf" },
+  no_power = { color = "red", order = "cg" },
+  working = { color = "green", order = "ch" },
 }
 
 return constants

@@ -1,4 +1,4 @@
-local constants = require("constants")
+local constants = require("__BottleneckLite__/constants")
 
 data:extend({
   {
@@ -24,11 +24,19 @@ data:extend({
   },
   {
     type = "string-setting",
+    name = "bnl-indicator-style",
+    setting_type = "startup",
+    default_value = "default",
+    allowed_values = { "default", "solid" },
+    order = "ba",
+  },
+  {
+    type = "string-setting",
     name = "bnl-indicator-size",
     setting_type = "startup",
     default_value = constants.default_size,
     allowed_values = constants.size_settings,
-    order = "ad",
+    order = "bb",
   },
 })
 
