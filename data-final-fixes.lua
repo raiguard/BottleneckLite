@@ -1,4 +1,4 @@
-local area = require("__flib__.area")
+local bounding_box = require("__flib__.bounding-box")
 
 local constants = require("constants")
 
@@ -6,12 +6,12 @@ if not settings.startup["bnl-enable"].value then
   return
 end
 
--- Extract settings
+--- @type table<string, Color>
 local status_colors = {}
 for name, spec in pairs(settings.startup) do
   local matched, _, key = string.find(name, "^bnl%-color%-(.-)$")
   if matched then
-    status_colors[key] = constants.colors[spec.value]
+    status_colors[key] = spec.value --[[@as Color]]
   end
 end
 
@@ -20,15 +20,15 @@ local size = constants.sizes[settings.startup["bnl-indicator-size"].value]
 
 local function build_indicator(prototype)
   -- Calculate shift for the indicator
-  local Box = area.load(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
+  local box = bounding_box.ensure_explicit(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
   local positions = {
     north_south = {},
     east_west = {},
   }
   for _, tbl in pairs(positions) do
-    tbl[1] = Box.left_top.x + (Box:width() * constants.horizontal_position) -- X
-    tbl[2] = Box.right_bottom.y - size - constants.additional_vertical_offset -- Y
-    Box = Box:rotate()
+    tbl[1] = box.left_top.x + (bounding_box.width(box) * constants.horizontal_position) -- X
+    tbl[2] = box.right_bottom.y - size - constants.additional_vertical_offset -- Y
+    box = bounding_box.rotate(box)
   end
 
   return {

@@ -35,12 +35,11 @@ data:extend({
 local color_settings = {}
 for name, spec in pairs(constants.status_settings) do
   color_settings[#color_settings + 1] = {
-    type = "string-setting",
+    type = "color-setting",
     name = "bnl-color-" .. name,
     localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-" .. name } },
     setting_type = "startup",
     default_value = spec.color,
-    allowed_values = constants.color_settings,
     order = spec.order,
   }
 end
