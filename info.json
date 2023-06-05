@@ -1,6 +1,6 @@
 {
   "name": "BottleneckLite",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "title": "Bottleneck Lite",
   "description": "A tool for locating bottlenecks in your factory, with zero runtime overhead and instant response to changes in status.",
   "author": "raiguard",
