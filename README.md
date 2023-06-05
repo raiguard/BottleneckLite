@@ -49,6 +49,6 @@ For mod authors - if you don't want an indicator to show on your entity for some
 
 ## Screenshots
 
-![](resources/demo-screenshot.png)
+![](screenshots/demo-screenshot.png)
 
-![](resources/demo-screenshot-night.png)
+![](screenshots/demo-screenshot-night.png)
