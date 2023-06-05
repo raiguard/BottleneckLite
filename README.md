@@ -44,8 +44,8 @@ Factorio to take effect.
 
 Bottleneck Lite, in comparison to Bottleneck, has _no runtime scripting_. The
 indicators are added to the actual sprites of each entity, and are tinted based
-on the working visualisations property. This means that Bottleneck Lite is
-infinitely scaleable, and will instantly respond to changes in entity status
+on the working visualisations property. This means that Bottleneck Lite can
+scale infinitely, and will instantly respond to changes in entity status
 regardless of how many entities there are.
 
 ### Pros
