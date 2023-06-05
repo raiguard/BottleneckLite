@@ -31,7 +31,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-disabled",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-disabled" } },
     setting_type = "startup",
     default_value = { r = 1 },
     order = "b",
@@ -39,7 +38,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-full_output",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-full_output" } },
     setting_type = "startup",
     default_value = { r = 1, g = 1 },
     order = "b",
@@ -47,7 +45,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-idle",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-idle" } },
     setting_type = "startup",
     default_value = { r = 1 },
     order = "b",
@@ -55,7 +52,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-insufficient_input",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-insufficient_input" } },
     setting_type = "startup",
     default_value = { r = 1 },
     order = "b",
@@ -63,7 +59,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-low_power",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-low_power" } },
     setting_type = "startup",
     default_value = { r = 1, g = 1 },
     order = "b",
@@ -71,7 +66,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-no_minable_resources",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-no_minable_resources" } },
     setting_type = "startup",
     default_value = { r = 1 },
     order = "b",
@@ -79,7 +73,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-no_power",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-no_power" } },
     setting_type = "startup",
     default_value = { r = 1 },
     order = "b",
@@ -87,7 +80,6 @@ data:extend({
   {
     type = "color-setting",
     name = "bnl-color-working",
-    localised_name = { "mod-setting-name.bnl-color-setting", { "mod-setting-name.bnl-status-working" } },
     setting_type = "startup",
     default_value = { g = 1 },
     order = "b",
