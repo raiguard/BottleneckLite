@@ -2,6 +2,7 @@
 Version: 1.2.6
 Date: ????
   Changes:
+    - Updated base dependency to 1.1.85 to avoid nuking of all mod settings on upgrade
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.5
 Date: 2023-06-05
