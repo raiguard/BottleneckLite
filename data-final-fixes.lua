@@ -15,10 +15,11 @@ local ignored_entities = {
   ["se-core-miner"] = true,
   ["se-rocket-launch-pad-silo"] = true,
   -- Transport Drones
+  ["buffer-depot"] = true,
+  ["fluid-depot"] = true,
   ["fuel-depot"] = true,
   ["request-depot"] = true,
   ["supply-depot"] = true,
-  ["buffer-depot"] = true,
 }
 
 local sizes = {

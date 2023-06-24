@@ -2,6 +2,7 @@
 Version: 1.2.7
 Date: ????
   Changes:
+    - Removed indicator from Transport Drones fluid depots (#9)
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.6
 Date: 2023-06-19
