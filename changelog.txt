@@ -2,6 +2,7 @@
 Version: 1.2.8
 Date: ????
   Changes:
+    - Improved the behavior of color settings with regards to alpha (#12)
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.7
 Date: 2023-06-24

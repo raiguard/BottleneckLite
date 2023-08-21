@@ -34,7 +34,7 @@ local status_colors = {}
 for name, spec in pairs(settings.startup) do
   local key = string.match(name, "^bnl%-color%-(.-)$")
   if key then
-    status_colors[key] = spec.value --[[@as Color]]
+    status_colors[key] = util.premul_color(spec.value --[[@as Color]])
   end
 end
 
