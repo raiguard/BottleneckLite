@@ -1,4 +1,4 @@
-local bounding_box = require("__flib__.bounding-box")
+local flib_bounding_box = require("__flib__.bounding-box")
 
 if not settings.startup["bnl-enable"].value then
   return
@@ -42,16 +42,17 @@ local enable_glow = settings.startup["bnl-glow"].value --[[@as boolean]]
 local size = sizes[settings.startup["bnl-indicator-size"].value] --[[@as double]]
 
 local function build_indicator(prototype)
-  local box = bounding_box.ensure_explicit(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
+  local box =
+    flib_bounding_box.ensure_explicit(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
   --- @type table<string, MapPosition>
   local positions = {
     north_south = {},
     east_west = {},
   }
   for _, pos in pairs(positions) do
-    pos.x = box.left_top.x + (bounding_box.width(box) * horizontal_position)
+    pos.x = box.left_top.x + (flib_bounding_box.width(box) * horizontal_position)
     pos.y = box.right_bottom.y - size - additional_vertical_offset
-    box = bounding_box.rotate(box)
+    box = flib_bounding_box.rotate(box)
   end
 
   return {
