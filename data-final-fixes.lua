@@ -78,7 +78,7 @@ local function build_indicator(prototype)
 end
 
 local function add_to_wv(prototype, wv_root)
-  wv_root = wv_root or prototype
+  wv_root = wv_root or prototype.graphics_set or prototype
 
   wv_root.status_colors = status_colors
 
