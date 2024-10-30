@@ -111,14 +111,11 @@ end
 for name, drill in pairs(data.raw["mining-drill"]) do
   if not ignored_entities[name] then
     if drill.bottleneck_ignore then
-      drill.bottleneck_ignore = nil
+      drill.bottleneck_ignore = nil --- @diagnostic disable-line:inject-field
     else
-      drill.status_colors = status_colors
-
-      if not drill.graphics_set then
-        drill.graphics_set = {
-          animation = drill.animations,
-        }
+      drill.graphics_set.status_colors = status_colors
+      if drill.wet_mining_graphics_set then
+        drill.wet_mining_graphics_set.status_colors = status_colors
       end
 
       add_to_wv(drill, drill.graphics_set)
