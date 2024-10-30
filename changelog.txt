@@ -3,6 +3,7 @@ Version: 1.3.1
 Date: ????
   Bugfixes:
     - Fixed that indicators would not glow at night. (#14)
+    - Fixed that indicators would disappear when flipping a crafting machine with special flipped graphics. (#15)
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.0
 Date: 2024-10-15

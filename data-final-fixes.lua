@@ -96,7 +96,8 @@ for _, type in pairs({ "assembling-machine", "furnace", "rocket-silo" }) do
       if crafter.bottleneck_ignore then
         crafter.bottleneck_ignore = nil
       else
-        add_to_wv(crafter)
+        add_to_wv(crafter, crafter.graphics_set)
+        add_to_wv(crafter, crafter.graphics_set_flipped)
       end
     end
   end
