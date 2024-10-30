@@ -58,8 +58,6 @@ local function build_indicator(prototype)
   return {
     always_draw = true,
     apply_tint = "status",
-    draw_as_light = enable_glow,
-    draw_as_sprite = true,
     render_layer = "light-effect",
     animation = {
       filename = "__BottleneckLite__/graphics/solid.png",
@@ -69,7 +67,7 @@ local function build_indicator(prototype)
       line_length = 1,
       frame_count = 1,
       animation_speed = 1,
-      direction_count = 1,
+      draw_as_glow = enable_glow,
     },
     north_position = positions.north_south,
     east_position = positions.east_west,
