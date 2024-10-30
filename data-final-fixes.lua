@@ -41,7 +41,19 @@ end
 local enable_glow = settings.startup["bnl-glow"].value --[[@as boolean]]
 local size = sizes[settings.startup["bnl-indicator-size"].value] --[[@as double]]
 
-local function build_indicator(prototype)
+local function add_indicator(prototype, graphics_set)
+  if not graphics_set then
+    return
+  end
+
+  graphics_set.status_colors = status_colors
+
+  local working_visualisations = graphics_set.working_visualisations
+  if not working_visualisations then
+    working_visualisations = {}
+    graphics_set.working_visualisations = working_visualisations
+  end
+
   local box =
     flib_bounding_box.ensure_explicit(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
   --- @type table<string, MapPosition>
@@ -55,7 +67,7 @@ local function build_indicator(prototype)
     box = flib_bounding_box.rotate(box)
   end
 
-  return {
+  working_visualisations[#working_visualisations + 1] = {
     always_draw = true,
     apply_tint = "status",
     render_layer = "light-effect",
@@ -76,28 +88,14 @@ local function build_indicator(prototype)
   }
 end
 
-local function add_to_wv(prototype, wv_root)
-  wv_root = wv_root or prototype.graphics_set or prototype
-
-  wv_root.status_colors = status_colors
-
-  local wv = wv_root.working_visualisations
-  if not wv then
-    wv = {}
-    wv_root.working_visualisations = wv
-  end
-
-  wv[#wv + 1] = build_indicator(prototype)
-end
-
 for _, type in pairs({ "assembling-machine", "furnace", "rocket-silo" }) do
   for name, crafter in pairs(data.raw[type]) do
     if not ignored_entities[name] then
       if crafter.bottleneck_ignore then
-        crafter.bottleneck_ignore = nil
+        crafter.bottleneck_ignore = nil --- @diagnostic disable-line:inject-field
       else
-        add_to_wv(crafter, crafter.graphics_set)
-        add_to_wv(crafter, crafter.graphics_set_flipped)
+        add_indicator(crafter, crafter.graphics_set)
+        add_indicator(crafter, crafter.graphics_set_flipped)
       end
     end
   end
@@ -112,16 +110,8 @@ for name, drill in pairs(data.raw["mining-drill"]) do
     if drill.bottleneck_ignore then
       drill.bottleneck_ignore = nil --- @diagnostic disable-line:inject-field
     else
-      drill.graphics_set.status_colors = status_colors
-      if drill.wet_mining_graphics_set then
-        drill.wet_mining_graphics_set.status_colors = status_colors
-      end
-
-      add_to_wv(drill, drill.graphics_set)
-
-      if drill.wet_mining_graphics_set then
-        add_to_wv(drill, drill.wet_mining_graphics_set)
-      end
+      add_indicator(drill, drill.graphics_set)
+      add_indicator(drill, drill.wet_mining_graphics_set)
     end
   end
 end
