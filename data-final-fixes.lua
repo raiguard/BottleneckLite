@@ -54,8 +54,11 @@ local function add_indicator(prototype, graphics_set)
     graphics_set.working_visualisations = working_visualisations
   end
 
-  local box =
-    flib_bounding_box.ensure_explicit(prototype.selection_box or prototype.collision_box or prototype.drawing_box)
+  local box = prototype.selection_box or prototype.collision_box
+  if not box then
+    return
+  end
+  box = flib_bounding_box.ensure_explicit(box)
   --- @type table<string, MapPosition>
   local positions = {
     north_south = {},
