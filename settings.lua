@@ -60,7 +60,7 @@ data:extend({
     type = "color-setting",
     name = "bnl-color-low_power",
     setting_type = "startup",
-    default_value = { r = 1, g = 1 },
+    default_value = { r = 1, g = 0.5 },
     order = "b",
   },
   {
