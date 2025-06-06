@@ -23,6 +23,7 @@ local ignored_entities = {
 }
 
 local sizes = {
+  tiny = 0.075,
   small = 0.15,
   medium = 0.2,
   large = 0.25,

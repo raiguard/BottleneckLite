@@ -25,7 +25,7 @@ data:extend({
     name = "bnl-indicator-size",
     setting_type = "startup",
     default_value = "small",
-    allowed_values = { "small", "medium", "large", "huge" },
+    allowed_values = { "tiny", "small", "medium", "large", "huge" },
     order = "a",
   },
   {
